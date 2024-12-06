@@ -656,96 +656,88 @@
             z-index: 1001;
         }
 
-        /* Add these button styles */
+        /* Enhanced CTA button styles */
         .cta-button {
-            display: inline-block;
-            padding: clamp(1rem, 2vw, 1.4rem) clamp(2rem, 4vw, 3.2rem);
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            letter-spacing: -0.01em;
-            background: linear-gradient(135deg, #3b82f6, #2563eb, #1d4ed8);
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
-            color: white;
-            text-decoration: none;
-            border-radius: clamp(8px, 1vw, 12px);
-            border: none;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            color: #fff;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-            z-index: 1;
-            white-space: nowrap;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            text-decoration: none;
+            box-shadow: 
+                0 4px 20px rgba(59, 130, 246, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            letter-spacing: 0.02em;
         }
 
         .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -75%;
-            width: 50%;
+            left: -100%;
+            width: 100%;
             height: 100%;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.6),
+                rgba(255, 255, 255, 0.2),
                 transparent
             );
-            transform: skewX(-25deg);
-            transition: 0.75s;
-            z-index: 1;
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            border-radius: 7px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-            z-index: -1;
+            transition: transform 0.6s ease;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+            box-shadow: 
+                0 6px 30px rgba(59, 130, 246, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            background: linear-gradient(135deg, #4f8df9, #2563eb);
         }
 
         .cta-button:hover::before {
-            animation: shine 1.2s ease-in-out;
+            animation: shimmer 1.5s infinite;
         }
 
-        @keyframes shine {
+        @keyframes shimmer {
             100% {
-                left: 125%;
+                transform: translateX(200%);
             }
         }
 
-        /* Add a subtle pulse animation */
-        @keyframes pulse {
+        /* Add subtle pulse animation */
+        @keyframes softPulse {
             0% {
-                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                box-shadow: 
+                    0 4px 20px rgba(59, 130, 246, 0.3),
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
             }
             50% {
-                box-shadow: 0 4px 25px rgba(59, 130, 246, 0.5);
+                box-shadow: 
+                    0 4px 25px rgba(59, 130, 246, 0.4),
+                    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
             }
             100% {
-                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                box-shadow: 
+                    0 4px 20px rgba(59, 130, 246, 0.3),
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
             }
         }
 
-        .cta-button {
-            animation: pulse 3s infinite;
+        .hero .cta-button {
+            animation: softPulse 3s infinite;
         }
 
-        .cta-button:hover {
+        .hero .cta-button:hover {
             animation: none;
         }
 
@@ -802,6 +794,174 @@
         .hero-content {
             animation: fadeInScale 1s cubic-bezier(0.2, 0, 0.2, 1);
         }
+
+        /* Replace the about section styles with these */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .journey-main {
+            background: linear-gradient(145deg,
+                rgba(59, 130, 246, 0.1),
+                rgba(30, 41, 59, 0.3)
+            );
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--glass-shine);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .journey-main:hover::before {
+            opacity: 1;
+        }
+
+        .journey-main h3 {
+            font-size: 2.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .journey-features {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .feature {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateX(10px);
+            border-color: rgba(59, 130, 246, 0.2);
+            box-shadow: var(--premium-shadow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.8;
+        }
+
+        .feature-content h4 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-main {
+                padding: 2rem;
+            }
+
+            .feature:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .journey-main h3 {
+                font-size: 2rem;
+            }
+
+            .feature {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        .phone-number {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .cta-button {
+                padding: 1rem 2.5rem;
+            }
+            
+            .phone-number {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -816,8 +976,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Every Moment Is a Chance To Grow</h1>
-            <p>T-Lab Training offers specialized basketball training sessions on Sullivan's Island, helping players enhance their skills, elevate their performance, and reach their full potential on the court.</p>
-            <a href="#contact" class="cta-button">Start Your Journey</a>
+            <p>T-Lab Training provides elite basketball training on Sullivan's Island. Transform your game with personalized training that delivers proven results.</p>
+            <a href="tel:+18432887106" class="cta-button">
+                <span>Start Your Journey</span>
+            </a>
         </div>
     </section>
 
@@ -846,35 +1008,49 @@
     </section>
 
     <section id="about">
-        <div class="about">
-            <h2>Your Journey To Basketball Excellence</h2>
-            
-            <div class="bento-card bento-main">
-                <h3>Comprehensive Training Approach</h3>
-                <p>At T-Lab Training, we are dedicated to helping athletes of all levels reach their full potential on the court. Our training programs are designed by experienced coaches who have a proven track record in player development.</p>
-                <p>We focus on essential basketball skills while emphasizing the mental aspects of the game, ensuring a well-rounded development approach.</p>
+        <div class="section-title">
+            <h2>Your Journey To Excellence</h2>
+            <p>A comprehensive approach to basketball mastery</p>
+        </div>
+
+        <div class="journey-grid">
+            <div class="journey-main">
+                <h3>Elite Training Methodology</h3>
+                <p>At T-Lab Training, we've developed a sophisticated approach that combines technical excellence with mental fortitude. Our program is designed to transform talented players into exceptional athletes.</p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Elite</span>
+                        <span class="stat-label">Training Program</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="bento-card bento-tall">
-                <h3>Skill Development</h3>
-                <p>Master fundamental techniques:</p>
-                <ul>
-                    <li>Advanced shooting mechanics</li>
-                    <li>Ball handling mastery</li>
-                    <li>Strategic passing</li>
-                    <li>Defensive positioning</li>
-                    <li>Court awareness</li>
-                </ul>
-            </div>
-            
-            <div class="bento-card">
-                <h3>Mental Conditioning</h3>
-                <p>Develop the winning mindset needed for peak performance through focused mental training and strategy sessions.</p>
-            </div>
-            
-            <div class="bento-card">
-                <h3>Performance Tracking</h3>
-                <p>Regular progress assessments and personalized feedback to ensure continuous improvement.</p>
+
+            <div class="journey-features">
+                <div class="feature">
+                    <div class="feature-icon">01</div>
+                    <div class="feature-content">
+                        <h4>Skill Mastery</h4>
+                        <p>Advanced techniques in shooting, dribbling, and strategic gameplay</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">02</div>
+                    <div class="feature-content">
+                        <h4>Performance Analytics</h4>
+                        <p>Data-driven improvement tracking and personalized feedback</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">03</div>
+                    <div class="feature-content">
+                        <h4>Mental Conditioning</h4>
+                        <p>Developing resilience, focus, and championship mindset</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
