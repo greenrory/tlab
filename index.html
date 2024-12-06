@@ -5,107 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T-Lab Training</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Modern CSS Reset & Variables */
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --background: #060b16;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
-            color: #333;
+            padding-top: 80px;
+            padding-bottom: 60px;
+            min-height: 100vh;
         }
+
+        /* Header Styles */
         header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        header h1 {
+            font-size: 2rem;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* Section Styles */
         section {
-            padding: 20px;
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        .offerings, .testimonials {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .offer, .testimonial {
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 20px;
-            width: 30%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .testimonial {
-            background-color: #f9f9f9;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 10px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Card Grid Layouts */
+        .offerings, .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .offer, .testimonial {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer:hover, .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .offer::before, .testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .offer:hover::before, .testimonial:hover::before {
+            opacity: 1;
+        }
+
+        .offer h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1rem;
             position: fixed;
             bottom: 0;
             width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>T-Lab Training</h1>
+        <p>Elevate your game with elite basketball training on Sullivan's Island</p>
+    </header>
 
-<header>
-    <h1>Every Moment Is a Chance To Grow</h1>
-    <p>T-Lab Training offers specialized basketball training sessions on Sullivan's Island, helping players enhance their skills, elevate their performance, and reach their full potential on the court.</p>
-</header>
+    <section>
+        <h2>What We Offer</h2>
+        <div class="offerings">
+            <div class="offer">
+                <h3>Basketball Skill Development</h3>
+                <p>Master essential techniques through our comprehensive skill development programs, focusing on shooting, dribbling, and game awareness.</p>
+            </div>
+            <div class="offer">
+                <h3>Performance Conditioning</h3>
+                <p>Build strength, agility, and endurance with our specialized conditioning programs designed for basketball athletes.</p>
+            </div>
+            <div class="offer">
+                <h3>Mental Game Coaching</h3>
+                <p>Develop mental toughness and strategic thinking to perform at your peak when it matters most.</p>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>What We Offer</h2>
-    <p>Our training designed by Tanner Volkmann.</p>
-    <div class="offerings">
-        <div class="offer">
-            <h3>Basketball Skill Development</h3>
-            <p>Our skill development programs emphasize essential techniques such as shooting, dribbling, and passing, helping players refine their abilities while building confidence on the court.</p>
+    <section>
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>T-Lab Training represents the pinnacle of basketball development, offering personalized training programs that transform players at every level. Under the expert guidance of Tanner Volkmann, we combine cutting-edge training methodologies with proven fundamentals.</p>
+            <p>Our comprehensive approach addresses all aspects of the game, from technical skills to mental preparation, ensuring complete player development.</p>
         </div>
-        <div class="offer">
-            <h3>Performance Conditioning</h3>
-            <p>A comprehensive conditioning program designed to enhance strength, agility, and endurance, ensuring players are physically and mentally prepared to excel in competitive environments.</p>
-        </div>
-        <div class="offer">
-            <h3>Mental Game Coaching</h3>
-            <p>We offer specialized sessions focused on developing a winning mindset, resilience, and focus, teaching players how to overcome challenges and stay mentally strong during games.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <h2>About Us</h2>
-    <p>At T-Lab Training, we are dedicated to helping athletes of all levels reach their full potential on the court. Our training programs are designed by experienced coaches who have a proven track record in player development.</p>
-    <p>We focus on essential basketball skills, including shooting, dribbling, and defense, while also emphasizing the mental aspects of the game, such as resilience, focus, and teamwork. Our comprehensive approach combines skill development with performance conditioning, ensuring that you not only improve your physical abilities but also cultivate a winning mindset.</p>
-    <p>Whether you’re a beginner looking to learn the fundamentals or an advanced player aiming to refine your skills, T-Lab Training provides the tools, strategies, and support you need to elevate your game and achieve your goals.</p>
-</section>
-
-<section>
-    <h2>What Our Customers Are Saying</h2>
-    <div class="testimonials">
-        <div class="testimonial">
-            <p>"Tanner has changed my son's game, his dribbles are looking amazing and it's been incredible watching his skills improve."</p>
-            <p><strong>- Kelly L.</strong></p>
+    <section>
+        <h2>Success Stories</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"The transformation in my son's game has been remarkable. Tanner's expertise and dedication have made all the difference."</p>
+                <p><strong>- Kelly L.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Two months of training here has improved my game more than years of casual practice. The results speak for themselves."</p>
+                <p><strong>- Bruce V.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"The passion for basketball that T-Lab has instilled in our kids is incredible. They're motivated like never before."</p>
+                <p><strong>- Ben A.</strong></p>
+            </div>
         </div>
-        <div class="testimonial">
-            <p>"I have a son who has been training with Tanner for about 2 months now and last season I've seen a significant improvement in his skills."</p>
-            <p><strong>- Bruce V.</strong></p>
-        </div>
-        <div class="testimonial">
-            <p>"Since we started sending our kids to T-Lab Training, they've been out in the driveway everyday and more motivated to play than ever."</p>
-            <p><strong>- Ben A.</strong></p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>See Results with T-Lab Training today. Each moment is a chance to grow.</p>
-    <p>Copyright 2024. All Rights Reserved. T-Lab Training.</p>
-</footer>
-
+    <footer>
+        <p>© 2024 T-Lab Training. Transform Your Game.</p>
+    </footer>
 </body>
 </html>
