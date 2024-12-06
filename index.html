@@ -918,10 +918,23 @@
         @media (max-width: 1024px) {
             .journey-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
             }
 
             .journey-main {
-                padding: 2rem;
+                padding: 2.5rem;
+            }
+
+            .journey-features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .feature {
+                transform: none;
+                text-align: left;
             }
 
             .feature:hover {
@@ -930,19 +943,47 @@
         }
 
         @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .journey-main {
+                padding: 2rem;
             }
 
             .journey-main h3 {
                 font-size: 2rem;
             }
 
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
             .feature {
+                padding: 1.5rem;
                 grid-template-columns: 1fr;
                 gap: 1rem;
-                text-align: center;
+            }
+
+            .feature-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-content h4 {
+                font-size: 1.3rem;
+            }
+
+            .feature-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-features {
+                grid-template-columns: 1fr;
             }
         }
 
