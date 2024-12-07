@@ -12,7 +12,7 @@
             --secondary: #1e293b;
             --accent: #3b82f6;
             --accent-gradient: linear-gradient(135deg, #60a5fa, #2563eb);
-            --accent-glow: 0 0 40px rgba(59, 130, 246, 0.25);
+            --accent-glow: 0 0 40pxrgba(59, 130, 246, 0.25);
             --text: #f8fafc;
             --text-muted: #94a3b8;
             --background: #030712;
@@ -23,16 +23,11 @@
                 0 0 30px rgba(59, 130, 246, 0.2);
             --hero-height-desktop: 100vh;
             --hero-height-mobile: 90vh;
-            --content-width: min(95%, 1400px);
-            --spacing-xl: clamp(3rem, 6vw, 6rem);
-            --spacing-lg: clamp(1.5rem, 3vw, 3rem);
+            --content-width: min(90%, 1400px);
+            --spacing-xl: clamp(4rem, 8vw, 8rem);
+            --spacing-lg: clamp(2rem, 4vw, 4rem);
             --font-size-hero: clamp(2.5rem, 8vw, 5.5rem);
             --font-size-subtitle: clamp(1rem, 2vw, 1.35rem);
-            --glass-shine: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1),
-                transparent 50%
-            );
         }
 
         * {
@@ -73,10 +68,8 @@
             min-height: 100vh;
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
-            padding: 0;
-            margin: 0;
-            width: 100%;
+            gap: 4rem;
+            padding: 2rem var(--spacing-lg);
             position: relative;
             overflow: hidden;
             background: linear-gradient(
@@ -97,14 +90,11 @@
         }
 
         .hero-content {
-            padding: var(--spacing-lg);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
+            padding: 2rem;
             position: relative;
             z-index: 2;
         }
@@ -147,9 +137,8 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1;
-            margin-bottom: 1.5rem;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -186,8 +175,7 @@
         }
 
         .hero p {
-            font-size: clamp(1rem, 1.2vw, 1.25rem);
-            margin-bottom: 2rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
             max-width: 600px;
             color: var(--text-muted);
             line-height: 1.7;
@@ -218,10 +206,6 @@
             box-shadow: 
                 0 8px 30px rgba(59, 130, 246, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
-            margin-bottom: 2rem;
         }
 
         .cta-button.primary:hover {
@@ -249,8 +233,9 @@
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding-top: 2rem;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
         }
@@ -300,27 +285,26 @@
 
         .floating-elements .element {
             position: absolute;
-            font-size: clamp(2rem, 4vw, 3rem);
-            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
+            font-size: 2rem;
             animation: float 6s ease-in-out infinite;
         }
 
         .floating-elements .element:nth-child(1) {
-            top: 15%;
-            left: 25%;
-            animation-duration: 8s;
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
         }
 
         .floating-elements .element:nth-child(2) {
-            top: 45%;
-            right: 20%;
-            animation-duration: 10s;
+            top: 50%;
+            right: 25%;
+            animation-delay: -2s;
         }
 
         .floating-elements .element:nth-child(3) {
-            bottom: 25%;
-            left: 35%;
-            animation-duration: 12s;
+            bottom: 30%;
+            left: 40%;
+            animation-delay: -4s;
         }
 
         @keyframes float {
@@ -332,39 +316,27 @@
         @media (max-width: 1024px) {
             .hero {
                 grid-template-columns: 1fr;
-                padding: var(--spacing-lg) 0;
+                text-align: center;
             }
 
             .hero-content {
+                align-items: center;
+            }
+
+            .hero h1 {
+                align-items: center;
+            }
+
+            .hero p {
                 margin: 0 auto;
-                padding: var(--spacing-lg);
-                text-align: left;
-                width: 100%;
             }
 
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-
-            .stat .number {
-                font-size: clamp(2rem, 4vw, 2.5rem);
+            .hero-visual {
+                display: none;
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                min-height: var(--hero-height-mobile);
-                background-attachment: scroll;
-                padding: var(--spacing-lg) var(--spacing-lg);
-            }
-
-            .hero-content {
-                padding: clamp(2rem, 5vw, 3rem);
-                text-align: left;
-                align-items: flex-start;
-            }
-
             .cta-group {
                 flex-direction: column;
                 width: 100%;
@@ -373,11 +345,6 @@
             .cta-button {
                 width: 100%;
                 justify-content: center;
-                padding: 1rem 2.5rem;
-            }
-
-            .phone-number {
-                font-size: 0.85rem;
             }
 
             .hero-stats {
@@ -452,17 +419,14 @@
 
         /* Sections */
         section {
-            padding: var(--spacing-xl) var(--spacing-lg);
-            width: 100%;
-            max-width: none;
+            padding: calc(var(--spacing-xl) * 0.9) var(--spacing-lg);
+            width: var(--content-width);
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 3.5rem;
-            max-width: var(--content-width);
-            margin: 0 auto var(--spacing-lg);
         }
 
         .section-title h2 {
@@ -516,8 +480,6 @@
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: clamp(1.5rem, 3vw, 2.5rem);
             margin: 2rem 0;
-            max-width: var(--content-width);
-            margin: 0 auto;
         }
 
         .offer {
@@ -726,8 +688,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin: 3.5rem 0;
-            max-width: var(--content-width);
-            margin: 0 auto;
         }
 
         .testimonial {
@@ -798,6 +758,38 @@
             position: relative;
             border-top: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: var(--hero-height-mobile);
+                background-attachment: scroll;
+                padding: var(--spacing-lg) var(--spacing-lg);
+            }
+
+            .hero-content {
+                padding: clamp(2rem, 5vw, 3rem);
+                text-align: left;
+            }
+
+            .hero h1 {
+                text-align: left;
+            }
+
+            .hero p {
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .bento-main {
+                grid-column: 1 / -1;
+            }
+
+            .section-title h2 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+            }
         }
 
         /* Animations */
@@ -983,7 +975,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 3rem;
-            max-width: var(--content-width);
+            max-width: var(--container);
             margin: 0 auto;
             padding: 2rem;
         }
@@ -1241,6 +1233,10 @@
                     <span class="text">Start Training</span>
                     <span class="subtext">Book Your Session</span>
                 </a>
+                <a href="#about" class="cta-button secondary">
+                    <span class="text">Learn More</span>
+                    <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -1300,59 +1296,29 @@
         </div>
     </section>
 
-    <section id="about" class="journey-section">
-        <div class="section-title">
-            <h2>Your Basketball Journey</h2>
-            <p>Transform your game with our elite training program</p>
-        </div>
-        
-        <div class="journey-grid">
-            <div class="journey-main">
+    <section id="about">
+        <div class="about">
+            <h2>Transform Your Game</h2>
+            
+            <div class="bento-card bento-main">
                 <h3>Elite Training Program</h3>
-                <p>Experience basketball training reimagined through our comprehensive program that combines cutting-edge techniques with personalized attention.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Athletes Trained</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Success Rate</span>
-                    </div>
-                </div>
+                <p>Experience basketball training reimagined. Our comprehensive program combines cutting-edge techniques with personalized attention to elevate your game to new heights.</p>
+                <ul>
+                    <li>Advanced skill development</li>
+                    <li>Performance analytics</li>
+                    <li>Mental conditioning</li>
+                    <li>Game strategy mastery</li>
+                </ul>
             </div>
             
-            <div class="journey-features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>Skill Development</h4>
-                        <p>Master advanced techniques and fundamentals through personalized training.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>Performance Analytics</h4>
-                        <p>Track your progress with detailed performance metrics and analysis.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>Mental Conditioning</h4>
-                        <p>Develop mental toughness and game-winning mindset.</p>
-                    </div>
-                </div>
+            <div class="bento-card bento-tall">
+                <h3>Proven Results</h3>
+                <p>Join the ranks of successful athletes who have transformed their game through our specialized training methods.</p>
+            </div>
+            
+            <div class="bento-card">
+                <h3>Expert Coaching</h3>
+                <p>Learn from experienced coaches who understand the unique challenges and opportunities of the game.</p>
             </div>
         </div>
     </section>
