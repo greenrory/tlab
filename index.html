@@ -9,7 +9,7 @@
             /* Modern color palette for basketball */
             --primary: #0c0f12;
             --secondary: #161b21;
-            --accent: #3b82f6;
+            --accent: #3b82f6;  /* Changed to blue */
             --accent-dark: #2563eb;
             --accent-light: #60a5fa;
             --text: #f3f4f6;
@@ -17,14 +17,27 @@
             --surface: #1f2937;
             
             /* Premium gradients */
-            --gradient-1: linear-gradient(135deg, #60a5fa, #2563eb);
-            --gradient-2: linear-gradient(135deg, #93c5fd, #3b82f6);
-            --gradient-surface: linear-gradient(145deg, 
-                rgba(31, 41, 55, 0.9), 
-                rgba(17, 24, 39, 0.95)
-            );
-            
-            /* Rest of the root variables remain the same */
+            --gradient-1: linear-gradient(135deg, #3b82f6, #2563eb);
+            --gradient-2: linear-gradient(135deg, #60a5fa, #3b82f6);
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            --accent-secondary: linear-gradient(135deg, #60a5fa, #3b82f6);
+            --background: #030712;
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --glass-bg: rgba(30, 41, 59, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --glow: 0 0 40px rgba(59, 130, 246, 0.2);
+            --bento-gradient-1: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.05));
+            --bento-gradient-2: linear-gradient(145deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+            --bento-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --bento-border: 1px solid rgba(255, 255, 255, 0.08);
+            --hero-height-desktop: 100vh;
+            --hero-height-mobile: 90vh;
+            --content-width: min(90%, 1400px);
+            --spacing-xl: clamp(4rem, 8vw, 8rem);
+            --spacing-lg: clamp(2rem, 4vw, 4rem);
+            --font-size-hero: clamp(2.5rem, 8vw, 5.5rem);
+            --font-size-subtitle: clamp(1rem, 2vw, 1.35rem);
         }
 
         * {
@@ -998,29 +1011,6 @@
                 font-size: 0.85rem;
             }
         }
-
-        /* Add modern blur effects and animations */
-        .floating-card {
-            backdrop-filter: blur(10px);
-            animation: float 6s infinite ease-in-out;
-        }
-
-        .hero-image-overlay {
-            background: linear-gradient(
-                135deg,
-                rgba(59, 130, 246, 0.2),
-                rgba(12, 15, 18, 0.95)
-            );
-        }
-
-        /* Update service cards for basketball theme */
-        .service-card {
-            background: rgba(31, 41, 55, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Rest of the CSS remains similar but with updated colors */
     </style>
 </head>
 <body>
