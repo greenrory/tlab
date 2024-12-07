@@ -1012,6 +1012,8 @@
             }
         }
     </style>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
     <header>
@@ -1031,7 +1033,7 @@
             <h1 class="hero-title">Level Up Your Game</h1>
             <p class="hero-subtitle">Experience premium basketball training that blends skill development with personalized coaching. Creating champions in Sullivan's Island.</p>
             <div class="cta-group">
-                <a href="tel:+18432887106" class="cta-button cta-primary">
+                <a href="#" onclick="openCalendly(); return false;" class="cta-button cta-primary">
                     <i class='bx bx-basketball'></i>
                     <span>Start Training</span>
                 </a>
@@ -1207,6 +1209,12 @@
         document.querySelectorAll('section').forEach(section => {
             sectionObserver.observe(section);
         });
+
+        function openCalendly() {
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/d/cnnf-9g6-y7g'
+            });
+        }
     </script>
 </body>
 </html>
