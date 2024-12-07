@@ -12,7 +12,7 @@
             --secondary: #1e293b;
             --accent: #3b82f6;
             --accent-gradient: linear-gradient(135deg, #60a5fa, #2563eb);
-            --accent-glow: 0 0 40pxrgba(59, 130, 246, 0.25);
+            --accent-glow: 0 0 40px rgba(59, 130, 246, 0.25);
             --text: #f8fafc;
             --text-muted: #94a3b8;
             --background: #030712;
@@ -28,6 +28,11 @@
             --spacing-lg: clamp(2rem, 4vw, 4rem);
             --font-size-hero: clamp(2.5rem, 8vw, 5.5rem);
             --font-size-subtitle: clamp(1rem, 2vw, 1.35rem);
+            --glass-shine: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1),
+                transparent 50%
+            );
         }
 
         * {
@@ -337,6 +342,18 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                min-height: var(--hero-height-mobile);
+                background-attachment: scroll;
+                padding: var(--spacing-lg) var(--spacing-lg);
+            }
+
+            .hero-content {
+                padding: clamp(2rem, 5vw, 3rem);
+                text-align: left;
+                align-items: flex-start;
+            }
+
             .cta-group {
                 flex-direction: column;
                 width: 100%;
@@ -345,6 +362,11 @@
             .cta-button {
                 width: 100%;
                 justify-content: center;
+                padding: 1rem 2.5rem;
+            }
+
+            .phone-number {
+                font-size: 0.85rem;
             }
 
             .hero-stats {
@@ -760,38 +782,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: var(--hero-height-mobile);
-                background-attachment: scroll;
-                padding: var(--spacing-lg) var(--spacing-lg);
-            }
-
-            .hero-content {
-                padding: clamp(2rem, 5vw, 3rem);
-                text-align: left;
-            }
-
-            .hero h1 {
-                text-align: left;
-            }
-
-            .hero p {
-                text-align: left;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .bento-main {
-                grid-column: 1 / -1;
-            }
-
-            .section-title h2 {
-                font-size: clamp(2rem, 5vw, 3.5rem);
-            }
-        }
-
         /* Animations */
         @keyframes fadeUp {
             from {
@@ -975,7 +965,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 3rem;
-            max-width: var(--container);
+            max-width: var(--content-width);
             margin: 0 auto;
             padding: 2rem;
         }
@@ -1296,29 +1286,59 @@
         </div>
     </section>
 
-    <section id="about">
-        <div class="about">
-            <h2>Transform Your Game</h2>
-            
-            <div class="bento-card bento-main">
+    <section id="about" class="journey-section">
+        <div class="section-title">
+            <h2>Your Basketball Journey</h2>
+            <p>Transform your game with our elite training program</p>
+        </div>
+        
+        <div class="journey-grid">
+            <div class="journey-main">
                 <h3>Elite Training Program</h3>
-                <p>Experience basketball training reimagined. Our comprehensive program combines cutting-edge techniques with personalized attention to elevate your game to new heights.</p>
-                <ul>
-                    <li>Advanced skill development</li>
-                    <li>Performance analytics</li>
-                    <li>Mental conditioning</li>
-                    <li>Game strategy mastery</li>
-                </ul>
+                <p>Experience basketball training reimagined through our comprehensive program that combines cutting-edge techniques with personalized attention.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Athletes Trained</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="bento-card bento-tall">
-                <h3>Proven Results</h3>
-                <p>Join the ranks of successful athletes who have transformed their game through our specialized training methods.</p>
-            </div>
-            
-            <div class="bento-card">
-                <h3>Expert Coaching</h3>
-                <p>Learn from experienced coaches who understand the unique challenges and opportunities of the game.</p>
+            <div class="journey-features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Skill Development</h4>
+                        <p>Master advanced techniques and fundamentals through personalized training.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Performance Analytics</h4>
+                        <p>Track your progress with detailed performance metrics and analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Mental Conditioning</h4>
+                        <p>Develop mental toughness and game-winning mindset.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
